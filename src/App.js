@@ -8,6 +8,8 @@ import Layout from './components/layout';
 const Login = lazy(() => import('./pages/login/login'))
 const LoginAdmin = lazy(() => import('./pages/login-admin/login-admin'))
 const Register = lazy(() => import('./pages/register/register'))
+const Userinfo = lazy(() => import('./pages/userinfo/userinfo'))
+
 
 function App() {
   let location = useLocation().pathname;
@@ -26,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <Suspense fallback={<Spin loading='true' style={{ top: '50%', position: 'absolute' }} />}>
+        <Suspense fallback={<Spin spinning={true} style={{ top: '50%', position: 'absolute' }} />}>
           <Switch>
             <Route exact path='/login'>
               <Login />
@@ -41,8 +43,8 @@ function App() {
               主页
           </Route>
             <Route exact path='/userinfo'>
-              基本信息
-          </Route>
+              <Userinfo />
+            </Route>
             <Route exact path='/course'>
               学生选课
           </Route>

@@ -15,7 +15,7 @@ export const onRegister = ({ name, userID, className, password, school, tel }) =
         res => res.data
     ).then(res => {
         if (res.code === 0) {
-            dispatch({ type: REGISTER_SUCCESS, payload: { token: res.data.token, userID } });
+            dispatch({ type: REGISTER_SUCCESS, payload: { token: res.data.token, userID, name } });
             //注册成功后即以当前账号登录
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('identity', ID_USER);

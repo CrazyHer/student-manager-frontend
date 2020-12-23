@@ -23,9 +23,13 @@ export const LOGIN_ADMIN_URL = `${ROOT}/login-admin`
  * 注册接口
  * @POST
  * @传入
- * {
- *  userID:String,
- *  password:String
+ * { 
+ *  name,
+ *  userID,
+ *  className,
+ *  password,
+ *  school,
+ *  tel
  * }
  * @返回
  * {
@@ -37,4 +41,45 @@ export const LOGIN_ADMIN_URL = `${ROOT}/login-admin`
  * }
  */
 export const REGISTER_URL = `${ROOT}/register`;
+
+/**
+ * 获取用户信息
+ * @GET
+ * @返回
+ * {
+ *  code:Number,
+ *  message:String,
+ *  data:{
+ *          name:String,
+ *          identity:String,
+ *          userID,
+ *          name,
+ *          sex,
+ *          school,
+ *          className,
+ *          tel,
+ *          degree,
+ *       }
+ * }
+ */
+export const GET_USER_INFO_URL = `${ROOT}/getuserinfo`;
+
+/**
+ * 修改用户信息
+ * @POST
+ * @传入
+ * {
+ *  className,
+ *  degree,
+ *  school,
+ *  sex,
+ *  tel
+ * }
+ * @返回
+ * {
+ *  code:Number,
+ *  message:String
+ * }
+ */
+export const EDIT_USER_INFO_URL = `${ROOT}/edituserinfo`;
 

@@ -16,7 +16,7 @@ export const onLoginAdmin = ({ adminID, password, autoLogin }) => (dispatch) => 
     ).then(res => {
         if (res.code === 0) {
             dispatch({ type: LOGIN_ADMIN_SUCCESS, payload: { token: res.data.token, adminID } });
-            autoLogin && localStorage.setItem('token', res.data.token) && localStorage.setItem('identity', ID_ADMIN);
+            autoLogin && localStorage.setItem('token', res.data.token);
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('identity', ID_ADMIN);
         } else {
