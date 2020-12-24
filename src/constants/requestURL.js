@@ -73,7 +73,8 @@ export const GET_USER_INFO_URL = `${ROOT}/getuserinfo`;
  *  degree,
  *  school,
  *  sex,
- *  tel
+ *  tel,
+ *  profileURL
  * }
  * @返回
  * {
@@ -83,3 +84,35 @@ export const GET_USER_INFO_URL = `${ROOT}/getuserinfo`;
  */
 export const EDIT_USER_INFO_URL = `${ROOT}/edituserinfo`;
 
+/**
+ * 获取课程信息
+ * @GET
+ * @返回
+ * [
+ *  {
+        courseID: '1',
+        courseName: '离散数学',
+        teacherName: '孔凡玉',
+        credit: '3',
+        time: '周四',
+        address: '五区408',
+        capacity: '70',
+        remains: '2',
+        selected: false
+*   },
+*     ......
+*  ]
+ */
+export const GET_COURSE_URL = `${ROOT}/getcourse`;
+/**
+ * 提交选课
+ * @POST
+ * @传入
+ * [{courseID:"2"},......]
+ * @返回
+ * {
+ *  code:Number,
+ *  message:String
+ * }
+ */
+export const SELECT_COURSE_URL = `${ROOT}/selectcourse`;

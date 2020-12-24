@@ -9,7 +9,7 @@ const Login = lazy(() => import('./pages/login/login'))
 const LoginAdmin = lazy(() => import('./pages/login-admin/login-admin'))
 const Register = lazy(() => import('./pages/register/register'))
 const Userinfo = lazy(() => import('./pages/userinfo/userinfo'))
-
+const Course = lazy(() => import('./pages/course/course'))
 
 function App() {
   let location = useLocation().pathname;
@@ -46,8 +46,8 @@ function App() {
               <Userinfo />
             </Route>
             <Route exact path='/course'>
-              学生选课
-          </Route>
+              <Course />
+            </Route>
             <Route exact path='/grade'>
               学生成绩
           </Route>

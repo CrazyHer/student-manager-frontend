@@ -8,13 +8,13 @@ export const EDIT_USER_INFO_SUCCESS = 'EDIT_USER_INFO_SUCCESS';
 export const EDIT_USER_INFO_FAILURE = 'EDIT_USER_INFO_FAILURE';
 
 
-export const onSubmitEdit = ({ className, degree, school, sex, tel }) => (dispatch) => {
+export const onSubmitEdit = ({ className, degree, school, sex, tel, profileURL }) => (dispatch) => {
     dispatch({ type: EDIT_USER_INFO_REQUEST });
-    return Axios.post(EDIT_USER_INFO_URL, qs.stringify({ className, degree, school, sex, tel })).then(
+    return Axios.post(EDIT_USER_INFO_URL, qs.stringify({ className, degree, school, sex, tel, profileURL })).then(
         res => res.data
     ).then(res => {
         if (res.code === 0) {
-            dispatch({ type: EDIT_USER_INFO_SUCCESS, payload: { className, degree, school, sex, tel } });
+            dispatch({ type: EDIT_USER_INFO_SUCCESS, payload: { className, degree, school, sex, tel, profileURL } });
 
         } else {
             dispatch({ type: EDIT_USER_INFO_FAILURE });

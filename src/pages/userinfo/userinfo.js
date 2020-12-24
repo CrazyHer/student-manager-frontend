@@ -1,4 +1,4 @@
-import { Button, Descriptions, Divider, Form, Input, Select, Spin, Upload } from 'antd'
+import { Button, Descriptions, Divider, Form, Input, Select, Upload } from 'antd'
 import Avatar from 'antd/lib/avatar/avatar';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
