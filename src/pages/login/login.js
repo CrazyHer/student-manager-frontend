@@ -36,7 +36,11 @@ const Login = () => {
                     <Button type='primary' htmlType='submit' loading={loading}>登录</Button>
                     <br />
                     <Link to='/register'>注册</Link>
-                    <Link to='/login-admin'>管理员登录</Link>
+                    {
+                        /**
+                            <Link to='/login-admin'>管理员登录</Link>
+                         */
+                    }
                 </Form.Item>
             </Form>
         </div>

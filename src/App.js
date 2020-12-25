@@ -6,7 +6,6 @@ import './App.css';
 import Layout from './components/layout';
 //根据路由实现页面组件懒加载
 const Login = lazy(() => import('./pages/login/login'))
-const LoginAdmin = lazy(() => import('./pages/login-admin/login-admin'))
 const Register = lazy(() => import('./pages/register/register'))
 const Userinfo = lazy(() => import('./pages/userinfo/userinfo'))
 const Course = lazy(() => import('./pages/course/course'))
@@ -35,9 +34,6 @@ function App() {
             <Route exact path='/login'>
               <Login />
             </Route>
-            <Route exact path='/login-admin'>
-              <LoginAdmin />
-            </Route>
             <Route exact path='/register'>
               <Register />
             </Route>
@@ -56,19 +52,27 @@ function App() {
             <Route exact path='/achievement'>
               <Achievement />
             </Route>
-
-            <Route exact path='/student-admin'>
-              学生管理
-          </Route>
-            <Route exact path='/course-admin'>
-              课程信息管理
-          </Route>
-            <Route exact path='/grade-admin'>
-              课程成绩管理
-          </Route>
-            <Route exact path='/achievement-admin'>
-              社会成果审核
-          </Route>
+            {
+              /**
+               * 暂时只做学生端，教师端不做了
+               * 
+                    <Route exact path='/login-admin'>
+                        <LoginAdmin />
+                    </Route>
+                    <Route exact path='/student-admin'>
+                        学生管理
+                    </Route>
+                      <Route exact path='/course-admin'>
+                        课程信息管理
+                    </Route>
+                      <Route exact path='/grade-admin'>
+                        课程成绩管理
+                    </Route>
+                      <Route exact path='/achievement-admin'>
+                        社会成果审核
+                    </Route>
+               */
+            }
             <Redirect from='/' to='/home' />
           </Switch>
         </Suspense>

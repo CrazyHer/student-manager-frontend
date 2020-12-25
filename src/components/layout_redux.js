@@ -5,7 +5,7 @@ import { GET_USER_INFO_URL } from "../constants/requestURL";
 export const GET_USER_INFO_REQUEST = 'GET_USER_INFO_REQUEST';
 export const GET_USER_INFO_SUCCESS = 'GET_USER_INFO_SUCCESS';
 export const GET_USER_INFO_FAILURE = 'GET_USER_INFO_FAILURE';
-
+export const LOGOFF = 'LOGOFF';
 
 export const getUserInfo = () => (dispatch) => {
     dispatch({ type: GET_USER_INFO_REQUEST });
@@ -24,4 +24,10 @@ export const getUserInfo = () => (dispatch) => {
         console.error(err);
         message.error('请求异常');
     })
+}
+
+export const logOff = () => (dispatch) => {
+    localStorage.clear();
+    sessionStorage.clear();
+    dispatch({ type: LOGOFF });
 }

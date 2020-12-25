@@ -1,3 +1,4 @@
+import { LOGOFF } from "../../components/layout_redux";
 import { LOGIN_ADMIN_FAILURE, LOGIN_ADMIN_REQUEST, LOGIN_ADMIN_SUCCESS } from "../../pages/login-admin/login-admin_redux";
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "../../pages/login/login_redux"
 const defaultState = {
@@ -27,6 +28,8 @@ export default (state = defaultState, action) => {
                 message: LOGIN_FAILURE,
                 loading: false,
             }
+        case LOGOFF:
+            return defaultState;
         default:
             return state;
     }

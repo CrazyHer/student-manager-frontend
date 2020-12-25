@@ -1,3 +1,4 @@
+import { LOGOFF } from "../../components/layout_redux"
 import { REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "../../pages/register/register_redux"
 
 const defaultState = {
@@ -12,7 +13,8 @@ export default (state = defaultState, action) => {
             return { ...state, loading: false, message: REGISTER_SUCCESS }
         case REGISTER_FAILURE:
             return { ...state, loading: false, message: REGISTER_FAILURE }
-
+        case LOGOFF:
+            return defaultState;
         default:
             return state
     }

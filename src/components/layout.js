@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { Layout, Menu, Spin } from 'antd'
+import { Button, Dropdown, Layout, Menu, Spin } from 'antd'
 import logo from '../assets/logo-light.png'
 import './layout.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { ID_USER } from '../redux/user/user';
-import { getUserInfo } from './layout_redux';
+import { getUserInfo, logOff } from './layout_redux';
 import Avatar from 'antd/lib/avatar/avatar';
 const _Layout = ({ children }) => {
     let location = useLocation().pathname;
@@ -22,6 +22,15 @@ const _Layout = ({ children }) => {
         history.push(e.key)
     }
 
+    const onLogoff = () => {
+        dispatch(logOff());
+    }
+
+    const menu = (
+        <Menu>
+            <Menu.Item><Button onClick={onLogoff} type='text'>退出登录</Button></Menu.Item>
+        </Menu>
+    )
     //若为登录注册页面，不显示布局；否则采用顶部-侧边布局
     if (location === '/login' || location === '/login-admin' || location === '/register') {
         return children;
@@ -36,14 +45,16 @@ const _Layout = ({ children }) => {
                         </Link>
                     </div>
                     {loading ? <Spin spinning={true}><h3>--登录中--</h3></Spin> :
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <Avatar style={{ marginRight: '20px' }} shape='circle' size='large' icon={profileURL ? <img alt='头像' src={profileURL} /> : name[0]} />
-                            <div className='user-tag'>
-                                <p>{name}</p>
-                                <p>{userID}</p>
-                                <p>{identity === ID_USER ? "学生" : "管理员"}</p>
-                            </div>
-                        </div>
+                        <Dropdown overlay={menu}>
+                            <Link to={location} style={{ display: 'flex', alignItems: 'center' }}>
+                                <Avatar style={{ marginRight: '20px' }} shape='circle' size='large' icon={profileURL ? <img alt='头像' src={profileURL} /> : name[0]} />
+                                <div className='user-tag'>
+                                    <p>{name}</p>
+                                    <p>{userID}</p>
+                                    <p>{identity === ID_USER ? "学生" : "管理员"}</p>
+                                </div>
+                            </Link>
+                        </Dropdown>
                     }
 
                 </Layout.Header>

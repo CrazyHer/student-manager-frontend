@@ -1,4 +1,4 @@
-import { GET_USER_INFO_FAILURE, GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS } from "../../components/layout_redux";
+import { GET_USER_INFO_FAILURE, GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS, LOGOFF } from "../../components/layout_redux";
 import { LOGIN_ADMIN_SUCCESS } from "../../pages/login-admin/login-admin_redux";
 import { LOGIN_SUCCESS } from "../../pages/login/login_redux";
 import { REGISTER_SUCCESS } from "../../pages/register/register_redux";
@@ -52,7 +52,8 @@ export default (state = defaultState, action) => {
                 ...state,
                 loading: false
             }
-
+        case LOGOFF:
+            return defaultState;
         default:
             return state;
     }
