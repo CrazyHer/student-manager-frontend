@@ -1,40 +1,39 @@
-import React, { Component, useEffect } from "react";
-import { Table, Button, Modal, message, Spin, Input, Space } from "antd";
-import Highlighter from 'react-highlight-words';
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react'
+import { Table, Input, Button, Space, Spin } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
-import { getCourse, selectCourse } from "./course_redux";
+import Highlighter from 'react-highlight-words';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGrade } from './grade_redux'
 
-const Course = () => {
-    let { data, loading } = useSelector(state => state.course);
+const Grade = () => {
+    let { data, loading } = useSelector(state => state.grade);
     data = data.map((value) => ({ ...value, key: value.courseID }));
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getCourse());
+        dispatch(getGrade())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    const onSubmit = (selectedRowKeys) => {
-        dispatch(selectCourse(selectedRowKeys));
-    };
+
+
     return (
         <div>
             <Spin spinning={loading}>
-                <SelectableTable data={data} onSubmit={onSubmit} />
+                <GradeTable data={data} />
             </Spin>
         </div>
     )
 }
-export default Course;
 
-//封装好的多选表格，接收两个参数：数组类型的data课表，以及选课提交的回调函数，回调函数参数是选中的课程号数组
-class SelectableTable extends Component {
-    constructor(props = { data: [], onSubmit: (selectedRowKeys) => { } }) {
+export default Grade;
+
+//封装成绩表格
+class GradeTable extends React.Component {
+    constructor(props = { data: [] }) {
         super();
         this.state = {
-            selectedRowKeys: [],
             searchText: '',
             searchedColumn: ''
-        };
+        }
     }
 
     //antd表格搜索功能实现
@@ -60,10 +59,10 @@ class SelectableTable extends Component {
                         style={{ width: 90 }}
                     >
                         搜索
-              </Button>
+                  </Button>
                     <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
                         重置
-              </Button>
+                  </Button>
                 </Space>
             </div>
         ),
@@ -101,48 +100,6 @@ class SelectableTable extends Component {
         this.setState({ searchText: '' });
     };
 
-    onSubmit = () => {
-        if (this.state.selectedRowKeys.length !== 0) {
-            let totalCredit = 0;
-            Modal.confirm({
-                title: "确认选课?",
-                content: (
-                    <div>
-                        您选了{this.state.selectedRowKeys.length}门课：
-                        {this.state.selectedRowKeys.map(value => {
-                            let res = [];
-                            this.props.data.forEach(element => {
-                                if (element.courseID === value) {
-                                    res.push(
-                                        <p key={element.courseID}>课程号{element.courseID}：{element.courseName}</p>
-                                    );
-                                    totalCredit += Number(element.credit);
-                                    return;
-                                }
-                            });
-                            return res;
-                        })}
-                            共{totalCredit}学分
-                    </div>
-                ),
-                onOk: (close) => { this.props.onSubmit(this.state.selectedRowKeys.map(value => ({ courseID: value }))); close(); }
-                ,
-            });
-        } else
-            message.info("您还没有选课哦！");
-    };
-
-    rowSelection = {
-        onChange: (selectedRowKeys) => {
-            this.setState({ selectedRowKeys: selectedRowKeys });
-        },
-        columnTitle: "选课",
-        renderCell: (checked, record, index, originNode) => {
-            if (record.selected) return "已选";
-            return originNode;
-        }
-    };
-
     render() {
         const columns = [
             {
@@ -158,56 +115,27 @@ class SelectableTable extends Component {
                 ...this.getColumnSearchProps('courseName'),
             },
             {
-                title: "授课教师",
-                dataIndex: "teacherName",
-                align: 'center',
-                ...this.getColumnSearchProps('teacherName'),
-            },
-            {
                 title: "学分",
                 dataIndex: "credit",
                 align: 'center',
                 sorter: (a, b) => a.credit - b.credit,
             },
             {
-                title: "上课时间",
-                dataIndex: "time",
+                title: '成绩',
+                dataIndex: 'grade',
                 align: 'center',
-            },
-            {
-                title: '上课地点',
-                dataIndex: 'address',
-                align: 'center',
-            },
-            {
-                title: "课程最大容量",
-                dataIndex: "capacity",
-                sorter: (a, b) => a.capacity - b.capacity,
-                align: 'center',
-
-            },
-            {
-                title: "课程剩余容量",
-                dataIndex: "remains",
-                sorter: (a, b) => a.remains - b.remains,
-                align: 'center',
-
+                sorter: (a, b) => a.grade - b.grade
             }
         ];
         return (
             <div>
                 <Table
-                    rowSelection={this.rowSelection}
                     columns={columns}
                     dataSource={this.props.data}
                     pagination={{ hideOnSinglePage: true }}
                 />
-                <div className="stats_btn">
-                    <Button type="primary" onClick={() => this.onSubmit()}>
-                        提交选课
-                    </Button>
-                </div>
             </div>
-        );
+        )
     }
 }
+

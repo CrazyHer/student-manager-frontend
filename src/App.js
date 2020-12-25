@@ -10,6 +10,8 @@ const LoginAdmin = lazy(() => import('./pages/login-admin/login-admin'))
 const Register = lazy(() => import('./pages/register/register'))
 const Userinfo = lazy(() => import('./pages/userinfo/userinfo'))
 const Course = lazy(() => import('./pages/course/course'))
+const Grade = lazy(() => import('./pages/grade/grade'))
+const Achievement = lazy(() => import('./pages/achievement/achievement'))
 
 function App() {
   let location = useLocation().pathname;
@@ -49,11 +51,11 @@ function App() {
               <Course />
             </Route>
             <Route exact path='/grade'>
-              学生成绩
-          </Route>
+              <Grade />
+            </Route>
             <Route exact path='/achievement'>
-              社会成果
-          </Route>
+              <Achievement />
+            </Route>
 
             <Route exact path='/student-admin'>
               学生管理
