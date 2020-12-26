@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form, Input, Select } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { onRegister } from './register_redux';
+import { useHistory } from 'react-router-dom';
 const Register = () => {
     const dispatch = useDispatch();
+    let history = useHistory();
     let loading = useSelector(state => state.register.loading);
+    let { token } = useSelector(state => state.user);
+    useEffect(() => {
+        token && history.push('/home');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token])
     let [form] = Form.useForm();
     const onSubmit = (e) => {
         console.log(e);

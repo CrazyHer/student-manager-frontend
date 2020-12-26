@@ -12,7 +12,7 @@ const Login = () => {
     useEffect(() => {
         if (token !== '') history.push('/home');
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [token]);
     const dispatch = useDispatch();
     let loading = useSelector(state => state.login.loading);
     const onFinish = (e) => {

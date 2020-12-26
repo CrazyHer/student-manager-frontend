@@ -1,6 +1,7 @@
 import { message } from "antd";
 import Axios from "axios";
 import qs from 'qs';
+import { getUserInfo } from "../../components/layout_redux";
 import { REGISTER_URL } from "../../constants/requestURL";
 import { ID_USER } from "../../redux/user/user";
 
@@ -19,6 +20,8 @@ export const onRegister = ({ name, userID, className, password, school, tel }) =
             //注册成功后即以当前账号登录
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('identity', ID_USER);
+            message.success('注册成功！');
+            dispatch(getUserInfo());
         } else {
             dispatch({ type: REGISTER_FAILURE });
             message.error('注册失败：' + res.message)

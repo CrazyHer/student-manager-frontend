@@ -1,4 +1,5 @@
 import { Spin } from 'antd';
+import Axios from 'axios';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router-dom';
@@ -16,7 +17,7 @@ function App() {
   let location = useLocation().pathname;
   let history = useHistory();
   let token = useSelector(state => state.user.token);
-
+  Axios.defaults.headers['token'] = token;
   useEffect(() => {
     //未登录状态访问除登录、注册、管理员登录页面以外的页面，均跳转到登录页面进行登录
     if (location !== '/login' && location !== '/login-admin' && location !== '/register' && token === '') {
@@ -24,7 +25,7 @@ function App() {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location])
+  }, [location, token])
 
   return (
     <div className="App">

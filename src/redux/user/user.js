@@ -9,16 +9,16 @@ export const ID_USER = 'ID_USER';
 
 const defaultState = {
     loading: false,
-    userID: '201900301198',
-    name: '何锐',
-    sex: '男',
-    degree: '本科生',
-    school: '软件学院',
-    className: '软工三班',
-    tel: '13047256872',
+    userID: '',
+    name: '',
+    sex: '',
+    degree: '',
+    school: '',
+    className: '',
+    tel: '',
     profileURL: '',
     identity: sessionStorage.getItem('identity') || ID_USER,
-    token: localStorage.getItem('token') || sessionStorage.getItem('token') || 'a',
+    token: localStorage.getItem('token') || sessionStorage.getItem('token') || '',
 }
 
 export default (state = defaultState, action) => {
@@ -53,7 +53,19 @@ export default (state = defaultState, action) => {
                 loading: false
             }
         case LOGOFF:
-            return defaultState;
+            return {
+                loading: false,
+                userID: '',
+                name: '',
+                sex: '',
+                degree: '',
+                school: '',
+                className: '',
+                tel: '',
+                profileURL: '',
+                identity: ID_USER,
+                token: '',
+            };
         default:
             return state;
     }

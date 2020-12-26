@@ -1,6 +1,7 @@
 import { message } from "antd";
 import Axios from "axios";
 import qs from 'qs';
+import { getUserInfo } from "../../components/layout_redux";
 import { LOGIN_URL } from "../../constants/requestURL";
 import { ID_USER } from "../../redux/user/user";
 
@@ -19,6 +20,7 @@ export const onLogin = ({ userID, password, autoLogin }) => (dispatch) => {
             autoLogin && localStorage.setItem('token', res.data.token);
             sessionStorage.setItem('token', res.data.token);
             sessionStorage.setItem('identity', ID_USER);
+            dispatch(getUserInfo());
         } else {
             dispatch({ type: LOGIN_FAILURE });
             message.error('登陆失败：' + res.message)

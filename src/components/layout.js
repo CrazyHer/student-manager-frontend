@@ -46,7 +46,7 @@ const _Layout = ({ children }) => {
                     </div>
                     {loading ? <Spin spinning={true}><h3>--登录中--</h3></Spin> :
                         <Dropdown overlay={menu}>
-                            <Link to={location} style={{ display: 'flex', alignItems: 'center' }}>
+                            <Link to='/userinfo' style={{ display: 'flex', alignItems: 'center' }}>
                                 <Avatar style={{ marginRight: '20px' }} shape='circle' size='large' icon={profileURL ? <img alt='头像' src={profileURL} /> : name[0]} />
                                 <div className='user-tag'>
                                     <p>{name}</p>
