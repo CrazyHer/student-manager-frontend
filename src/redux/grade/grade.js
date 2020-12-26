@@ -4,12 +4,7 @@ import { GET_GRADE_REQUEST, GET_GRADE_SUCCESS, GET_GRADE_FAILURE } from "../../p
 const defaultState = {
     loading: false,
     data: [
-        {
-            courseID: '1',
-            courseName: '离散数学',
-            credit: '4',
-            grade: '95'
-        }
+
     ]
 }
 export default (state = defaultState, action) => {

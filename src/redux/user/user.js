@@ -44,7 +44,8 @@ export default (state = defaultState, action) => {
         case EDIT_USER_INFO_SUCCESS:
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
+                loading: false
             }
         case GET_USER_INFO_FAILURE:
         case EDIT_USER_INFO_FAILURE:

@@ -55,7 +55,7 @@ const Achievement = () => {
                 <Button type='primary' onClick={() => setModalVisible(true)}>添加社会成果</Button>
             </Spin>
 
-            <Modal title='添加社会成果' visible={isModalVisible} footer={null}>
+            <Modal title='添加社会成果' visible={isModalVisible} footer={null} onCancel={onCancle}>
                 <Form form={form} onFinish={onSubmit}>
                     <Form.Item name='content' label="社会成果" rules={[{ required: true, message: "请填写社会成果！" }]}><Input /></Form.Item>
                     <Form.Item name="date" label="获得时间" rules={[{ required: true, message: "请选择获得时间！" }]}>

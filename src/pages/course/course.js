@@ -125,7 +125,16 @@ class SelectableTable extends Component {
                             共{totalCredit}学分
                     </div>
                 ),
-                onOk: (close) => { this.props.onSubmit(this.state.selectedRowKeys.map(value => ({ courseID: value }))); close(); }
+                onOk: (close) => {
+                    this.props.onSubmit(this.state.selectedRowKeys.map(value => ({ courseID: value })));
+                    //提交后state归零
+                    this.setState({
+                        selectedRowKeys: [],
+                        searchText: '',
+                        searchedColumn: ''
+                    })
+                    close();
+                }
                 ,
             });
         } else
@@ -203,7 +212,7 @@ class SelectableTable extends Component {
                     pagination={{ hideOnSinglePage: true }}
                 />
                 <div className="stats_btn">
-                    <Button type="primary" onClick={() => this.onSubmit()}>
+                    <Button type="primary" onClick={() => this.onSubmit()} >
                         提交选课
                     </Button>
                 </div>

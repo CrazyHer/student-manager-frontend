@@ -51,7 +51,6 @@ export const REGISTER_URL = `${ROOT}/register`;
  *  code:Number,
  *  message:String,
  *  data:{
- *          name:String,
  *          identity:String,
  *          userID,
  *          name,
@@ -60,6 +59,7 @@ export const REGISTER_URL = `${ROOT}/register`;
  *          className,
  *          tel,
  *          degree,
+ *          profileURL
  *       }
  * }
  */
@@ -115,7 +115,9 @@ export const GET_COURSE_URL = `${ROOT}/getcourse`;
  * 提交选课
  * @POST
  * @传入
- * [{courseID:"2"},......]
+ * {
+ *  data:[{courseID:"2"},......]
+ * }
  * @返回
  * {
  *  code:Number,

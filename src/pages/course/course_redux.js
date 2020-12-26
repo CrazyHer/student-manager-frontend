@@ -31,7 +31,7 @@ export const getCourse = () => (dispatch) => {
 
 export const selectCourse = (selectedRowKeys) => (dispatch) => {
     dispatch({ type: SELECT_COURSE_REQUEST });
-    return Axios.post(SELECT_COURSE_URL, qs.stringify(JSON.stringify(selectedRowKeys))).then(
+    return Axios.post(SELECT_COURSE_URL, qs.stringify({ data: JSON.stringify(selectedRowKeys) })).then(
         res => res.data
     ).then(res => {
         if (res.code === 0) {

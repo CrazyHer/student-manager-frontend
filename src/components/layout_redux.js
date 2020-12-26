@@ -13,7 +13,7 @@ export const getUserInfo = () => (dispatch) => {
         res => res.data
     ).then(res => {
         if (res.code === 0) {
-            dispatch({ type: GET_USER_INFO_SUCCESS, payload: { name: res.data.name, identity: res.data.identity } });
+            dispatch({ type: GET_USER_INFO_SUCCESS, payload: { ...res.data } });
             sessionStorage.setItem('identity', res.data.identity);
         } else {
             dispatch({ type: GET_USER_INFO_FAILURE });

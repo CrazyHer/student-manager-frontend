@@ -1,4 +1,4 @@
-import { Button, Descriptions, Divider, Form, Input, Select, Upload } from 'antd'
+import { Button, Descriptions, Divider, Form, Input, message, Select, Upload } from 'antd'
 import Avatar from 'antd/lib/avatar/avatar';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -36,6 +36,10 @@ export default () => {
 
     let [imgsrc, setImgsrc] = useState(profileURL);
     const handleChange = (file) => {
+        if (file.size / 1024 / 1024 > 1) {
+            message.info("图片必须小于1m！")
+            return false;
+        }
         getBase64(file).then(src => {
             setImgsrc(src);
             form.setFieldsValue({ profileURL: src });
