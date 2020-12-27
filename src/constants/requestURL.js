@@ -1,6 +1,5 @@
-//export const ROOT = 'https://api.herui.club/koa2'
+export const ROOT = 'https://api.herui.club/koa2';
 //export const ROOT = 'http://localhost:3000';
-export const ROOT = '/koa2'
 
 /**
  * 登录接口
