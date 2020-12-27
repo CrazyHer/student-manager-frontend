@@ -40,6 +40,19 @@
   width: 360px;
   border-radius: 8px;
 }
+@media screen and (max-width: 500px) {
+  .login-form {
+    background-color: rgba(200, 200, 200, 0.4);
+    backdrop-filter: blur(4px);
+    margin-top: 40px;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    float: right;
+    flex-direction: column;
+    border-radius: 8px;
+  }
+}
 .login-form > h3 {
   padding-top: 30px;
   margin-bottom: 20px;
