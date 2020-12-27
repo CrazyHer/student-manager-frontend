@@ -3,7 +3,7 @@ import Axios from "axios";
 import qs from 'qs';
 import { getUserInfo } from "../../components/layout_redux";
 import { REGISTER_URL } from "../../constants/requestURL";
-import { ID_USER } from "../../redux/user/user";
+import { ID_USER } from "../../reducers/user/user";
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';

@@ -16,8 +16,7 @@ const getBase64 = (file) => {
         reader.onerror = error => reject(error);
     });
 }
-
-export default () => {
+const UserInfo = () => {
     let { userID, name, sex, school, className, tel, degree, loading, profileURL } = useSelector(state => state.user);
     let [editing, setEditing] = useState(false);
     const dispatch = useDispatch();
@@ -133,3 +132,4 @@ export default () => {
         </div>
     )
 }
+export default UserInfo;

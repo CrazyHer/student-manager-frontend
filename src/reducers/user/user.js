@@ -21,7 +21,7 @@ const defaultState = {
     token: localStorage.getItem('token') || sessionStorage.getItem('token') || '',
 }
 
-export default (state = defaultState, action) => {
+const user = (state = defaultState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
         case LOGIN_ADMIN_SUCCESS:
@@ -71,3 +71,4 @@ export default (state = defaultState, action) => {
             return state;
     }
 }
+export default user;

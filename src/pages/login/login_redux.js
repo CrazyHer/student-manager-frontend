@@ -3,7 +3,7 @@ import Axios from "axios";
 import qs from 'qs';
 import { getUserInfo } from "../../components/layout_redux";
 import { LOGIN_URL } from "../../constants/requestURL";
-import { ID_USER } from "../../redux/user/user";
+import { ID_USER } from "../../reducers/user/user";
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

@@ -2,12 +2,14 @@
   color: white;
   float: left;
 }
+
 .ant-layout {
   background-color: white;
 }
 .header {
   display: flex;
   justify-content: space-between;
+  background: #a50001;
 }
 .user-tag * {
   margin: 2px 0 2px 0;

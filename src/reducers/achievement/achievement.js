@@ -5,7 +5,7 @@ const defaultState = {
     loading: false,
     data: []
 };
-export default (state = defaultState, action) => {
+const achievement = (state = defaultState, action) => {
     switch (action.type) {
         case GET_ACVM_REQUEST:
         case ADD_ACVM_REQUEST:
@@ -26,3 +26,4 @@ export default (state = defaultState, action) => {
             return state;
     }
 }
+export default achievement;

@@ -3,7 +3,7 @@ import Axios from 'axios';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router-dom';
-import './App.css';
+import './App.less';
 import Layout from './components/layout';
 //根据路由实现页面组件懒加载
 const Login = lazy(() => import('./pages/login/login'))

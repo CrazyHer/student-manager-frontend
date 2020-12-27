@@ -6,8 +6,7 @@ const defaultState = {
     message: '',
     data: []
 }
-
-export default (state = defaultState, action) => {
+const login = (state = defaultState, action) => {
     switch (action.type) {
         case GET_COURSE_REQUEST:
             return { ...state, loading: true, message: GET_COURSE_REQUEST }
@@ -28,4 +27,5 @@ export default (state = defaultState, action) => {
         default:
             return state;
     }
-}
+};
+export default login;

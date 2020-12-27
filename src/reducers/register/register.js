@@ -5,7 +5,7 @@ const defaultState = {
     message: '',
     loading: false
 }
-export default (state = defaultState, action) => {
+const register = (state = defaultState, action) => {
     switch (action.type) {
         case REGISTER_REQUEST:
             return { ...state, loading: true }
@@ -19,3 +19,4 @@ export default (state = defaultState, action) => {
             return state
     }
 }
+export default register;

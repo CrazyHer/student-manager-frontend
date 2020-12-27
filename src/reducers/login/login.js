@@ -5,7 +5,7 @@ const defaultState = {
     loading: false,
     message: ''
 }
-export default (state = defaultState, action) => {
+const login = (state = defaultState, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
         case LOGIN_ADMIN_REQUEST:
@@ -33,4 +33,5 @@ export default (state = defaultState, action) => {
         default:
             return state;
     }
-}
+};
+export default login;

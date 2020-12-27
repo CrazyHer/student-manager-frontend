@@ -7,7 +7,7 @@ const defaultState = {
 
     ]
 }
-export default (state = defaultState, action) => {
+const grade = (state = defaultState, action) => {
     switch (action.type) {
         case GET_GRADE_REQUEST:
             return { ...state, loading: true }
@@ -20,4 +20,5 @@ export default (state = defaultState, action) => {
         default:
             return state;
     }
-}
+};
+export default grade;

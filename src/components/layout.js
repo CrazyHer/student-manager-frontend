@@ -4,19 +4,19 @@ import { Button, Dropdown, Layout, Menu, Spin } from 'antd'
 import logo from '../assets/logo-light.png'
 import './layout.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { ID_USER } from '../redux/user/user';
+import { ID_USER } from '../reducers/user/user';
 import { getUserInfo, logOff } from './layout_redux';
 import Avatar from 'antd/lib/avatar/avatar';
 const _Layout = ({ children }) => {
     let location = useLocation().pathname;
     let history = useHistory();
-    let { name, userID, identity, loading, profileURL } = useSelector(state => state.user);
+    let { name, userID, identity, loading, profileURL, token } = useSelector(state => state.user);
     const dispatch = useDispatch();
     useEffect(() => {
         //获取用户信息
-        dispatch(getUserInfo());
+        token && dispatch(getUserInfo());
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [token])
 
     const onSelect = (e) => {
         history.push(e.key)
