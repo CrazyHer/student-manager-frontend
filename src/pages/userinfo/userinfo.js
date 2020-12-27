@@ -6,6 +6,7 @@ import { onSubmitEdit } from './userinfo_redux';
 import { UserOutlined } from '@ant-design/icons'
 import ImgCrop from 'antd-img-crop'
 import { useForm } from 'antd/lib/form/Form';
+import './userinfo.css'
 
 //上传头像时，将头像转成Base64，在后面放进表单里再一起提交给服务器保存
 const getBase64 = (file) => {
@@ -51,8 +52,8 @@ const UserInfo = () => {
             {editing ?
                 <Form onFinish={onSubmit}
                     form={form}
-                    initialValues={{ userID, name, sex, school, className, tel, degree, profileURL }}>
-
+                    initialValues={{ userID, name, sex, school, className, tel, degree, profileURL }}
+                >
                     <div>
                         <p style={{ float: 'left' }}>个人头像：</p>
                         <ImgCrop grid>
@@ -61,7 +62,7 @@ const UserInfo = () => {
                                 listType="picture-card"
                                 showUploadList={false}
                             >
-                                {imgsrc ? <img width='128px' height='128px' src={imgsrc} alt="图片预览" /> : '+ Upload'}
+                                {imgsrc ? <img width='128px' height='128px' src={imgsrc} alt="图片预览" /> : '+ 上传头像'}
                             </Upload>
                         </ImgCrop>
 
@@ -104,8 +105,8 @@ const UserInfo = () => {
                     <Divider />
 
                     <Form.Item>
-                        <Button type='primary' htmlType='submit' loading={loading}>提交修改</Button>
-                        <Button type='default' onClick={onCancle} disabled={loading}>取消</Button>
+                        <Button className="userinfo-btn" type='primary' htmlType='submit' loading={loading}>提交修改</Button>
+                        <Button className="userinfo-btn" type='default' onClick={onCancle} disabled={loading}>取消</Button>
                     </Form.Item>
 
                 </Form>

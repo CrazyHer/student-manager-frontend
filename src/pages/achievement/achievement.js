@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'antd/lib/form/Form';
 import moment from 'moment';
 import { addAchievement, delAchievement, getAchievement } from './achievement_redux';
-
+import './achievement.css'
 const Achievement = () => {
     let { data, loading } = useSelector(state => state.achievement);
     let [isModalVisible, setModalVisible] = useState(false);
@@ -52,7 +52,7 @@ const Achievement = () => {
                     }}
                 />
 
-                <Button type='primary' onClick={() => setModalVisible(true)}>添加社会成果</Button>
+                <Button className="achievement-btn" type='primary' onClick={() => setModalVisible(true)}>添加社会成果</Button>
             </Spin>
 
             <Modal title='添加社会成果' visible={isModalVisible} footer={null} onCancel={onCancle}>
@@ -66,9 +66,11 @@ const Achievement = () => {
                             onChange={(value) => { form.setFieldsValue({ date: value }) }}
                         />
                     </Form.Item>
-                    <Form.Item>
-                        <Button type='primary' htmlType='submit' >提交</Button>
-                        <Button type='default' onClick={onCancle}>取消</Button>
+                    <Form.Item >
+                        <div className='acvm-footer'>
+                            <Button className="achievement-btn" type='primary' htmlType='submit' >提交</Button>
+                            <Button className="achievement-btn" type='default' onClick={onCancle}>取消</Button>
+                        </div>
                     </Form.Item>
                 </Form>
             </Modal>

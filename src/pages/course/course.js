@@ -4,7 +4,7 @@ import Highlighter from 'react-highlight-words';
 import { useDispatch, useSelector } from "react-redux";
 import { SearchOutlined } from '@ant-design/icons'
 import { getCourse, selectCourse } from "./course_redux";
-
+import './course.css'
 const Course = () => {
     let { data, loading } = useSelector(state => state.course);
     data = data.map((value) => ({ ...value, key: value.courseID }));
@@ -212,7 +212,7 @@ class SelectableTable extends Component {
                     pagination={{ hideOnSinglePage: true }}
                 />
                 <div className="stats_btn">
-                    <Button type="primary" onClick={() => this.onSubmit()} >
+                    <Button className="course-btn" type="primary" onClick={() => this.onSubmit()} >
                         提交选课
                     </Button>
                 </div>

@@ -39,7 +39,7 @@ const _Layout = ({ children }) => {
             <Layout>
                 <Layout.Header className='header'>
                     <div>
-                        <Link to='/home'>
+                        <Link to='/userinfo'>
                             <img src={logo} alt='山东大学LOGO' width='214px' height='64px' />
                             <h1>学生管理系统</h1>
                         </Link>

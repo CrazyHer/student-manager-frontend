@@ -74,7 +74,7 @@ function App() {
                     </Route>
                */
             }
-            <Redirect from='/' to='/home' />
+            <Redirect from='/' to='/userinfo' />
           </Switch>
         </Suspense>
       </Layout>
