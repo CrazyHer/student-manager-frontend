@@ -25,7 +25,6 @@ const UserInfo = () => {
     const onClick = () => setEditing(true);
 
     const onSubmit = async (e) => {
-        console.log(e);
         await dispatch(onSubmitEdit(e));
         setEditing(false);
     }
