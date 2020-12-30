@@ -132,8 +132,7 @@ class SelectableTable extends Component {
                         selectedRowKeys: [],
                         searchText: '',
                         searchedColumn: ''
-                    })
-                    close();
+                    }, close());
                 }
                 ,
             });
@@ -141,18 +140,19 @@ class SelectableTable extends Component {
             message.info("您还没有选课哦！");
     };
 
-    rowSelection = {
-        onChange: (selectedRowKeys) => {
-            this.setState({ selectedRowKeys: selectedRowKeys });
-        },
-        columnTitle: "选课",
-        renderCell: (checked, record, index, originNode) => {
-            if (record.selected) return "已选";
-            return originNode;
-        }
-    };
-
     render() {
+        let rowSelection = {
+            onChange: (selectedRowKeys) => {
+                this.setState({ selectedRowKeys: selectedRowKeys });
+            },
+            selectedRowKeys: this.state.selectedRowKeys,
+            columnTitle: "选课",
+            renderCell: (checked, record, index, originNode) => {
+                if (record.selected) return "已选";
+                return originNode;
+            }
+        };
+
         const columns = [
             {
                 title: "课程号",
@@ -206,13 +206,13 @@ class SelectableTable extends Component {
         return (
             <div>
                 <Table
-                    rowSelection={this.rowSelection}
+                    rowSelection={rowSelection}
                     columns={columns}
                     dataSource={this.props.data}
                     pagination={{ hideOnSinglePage: true }}
                 />
                 <div className="stats_btn">
-                    <Button className="course-btn" type="primary" onClick={() => this.onSubmit()} >
+                    <Button className="course-btn" type="primary" onClick={this.onSubmit}>
                         提交选课
                     </Button>
                 </div>
